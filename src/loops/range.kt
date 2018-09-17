@@ -12,4 +12,10 @@ fun main(args: Array<String>) {
     for (i in range) {
         print(fizzBuzz(i))
     }
+
+    println()
+
+    for (i in 50 downTo 1 step 2) {
+        print(fizzBuzz(i))
+    }
 }
