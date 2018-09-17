@@ -1,4 +1,4 @@
 package smartcast
 
-class Sum(val left: Num, val right: Num) : Expression {
+class Sum(val left: Expression, val right: Expression) : Expression {
 }

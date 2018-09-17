@@ -16,7 +16,23 @@ fun evalWithWhen(expression: Expression): Int =
             else -> throw IllegalArgumentException("unknown expression")
         }
 
+fun evalWithLogging(expression: Expression): Int =
+        when (expression) {
+            is Num -> {
+                println("num: ${expression.value}")
+                expression.value
+            }
+            is Sum -> {
+                val left = evalWithLogging(expression.left)
+                val right = evalWithLogging(expression.right)
+                println("sum $left + $right")
+                left + right
+            }
+            else -> throw IllegalArgumentException("unknown expression")
+
+        }
+
 fun main(array: Array<String>) {
-    val result = eval(Sum(Num(1), Num(4)))
+    val result = eval(Sum(Num(2), Sum(Num(1), Num(4))))
     println("Result: $result")
 }
