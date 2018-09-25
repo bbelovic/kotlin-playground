@@ -13,5 +13,7 @@ internal class RegexKtTest {
         val expected = FileDetails("/home/bbelovic", "experiment", "kt")
         val actual = parseFileDetails(pathToFile)
         Assertions.assertEquals(expected, actual)
+        val actual2 = parseFileDetailsWithRegex(pathToFile)
+        Assertions.assertEquals(expected, actual2)
     }
 }
