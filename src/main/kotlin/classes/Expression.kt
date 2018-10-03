@@ -10,6 +10,11 @@ sealed class Expression : AItf() {
         override fun noOp() {
             println("Multiply - noOp")
         }
-
     }
+    class Sqrt : Expression() {
+        override fun noOp() {
+            println("Sqrt - noOp")
+        }
+    }
+
 }
