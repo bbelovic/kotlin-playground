@@ -1,3 +1,3 @@
 package classes
 
-open class Button constructor(visible: Boolean = true)
+open class Button constructor(name: String, visible: Boolean = true)
