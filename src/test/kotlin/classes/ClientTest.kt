@@ -2,6 +2,8 @@ package classes
 
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotSame
+import kotlin.test.assertTrue
 
 internal class ClientTest {
     @Test
@@ -14,5 +16,17 @@ internal class ClientTest {
     fun should_return_string_representation_of_class() {
         val client = Client(10)
         assertEquals("Client[id=10]", client.toString())
+    }
+    @Test
+    fun should_return_false_for_reference_comparison() {
+        val client1 = Client(5)
+        val client2 = Client(5)
+        assertNotSame(client1, client2)
+        assertEquals(client1, client2)
+    }
+    @Test
+    fun should_provide_hashCode_implementation() {
+        val set = hashSetOf(Client(5))
+        assertTrue(set.contains(Client(5)))
     }
 }
