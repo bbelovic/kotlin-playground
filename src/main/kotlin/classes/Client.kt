@@ -2,7 +2,7 @@ package classes
 
 import java.util.*
 
-class Client(id: Int) {
+class Client(id: Int) : AbstractClient() {
     var id: Int = id
     set(value) {
         println("Setting id with value [$field] to [$value]")
