@@ -1,3 +1,3 @@
 package classes
 
-abstract class AbstractClient
+abstract class AbstractClient : ClientItf
