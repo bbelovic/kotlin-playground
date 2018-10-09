@@ -12,5 +12,12 @@ class SimpleLambdaExpressionTest {
         assertEquals(expected, actual)
         assertTrue(expected == actual)
         assertFalse(expected === actual)
+
+        val getLogin = Person::login
+
+        val actualChars = people.map(Person::login).flatMap { it.toList() }
+        val expectedChars = arrayListOf('j', 'd', 'o', 'e', 'j', 'a', 'n','e', 'd', 'o', 'e')
+        assertEquals(expectedChars, actualChars)
+
     }
 }
