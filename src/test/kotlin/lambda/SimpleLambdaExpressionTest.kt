@@ -20,4 +20,27 @@ class SimpleLambdaExpressionTest {
         assertEquals(expectedChars, actualChars)
 
     }
+
+    @Test
+    fun test_method_reference() {
+        val createPerson = ::Person
+        val jdoe = createPerson(1, "jdoe")
+        val add = {x: Long, y: Long -> x + y}
+        assertEquals(2, add(1, 1))
+        assertTrue(Person(1, "jdoe") == jdoe)
+        kotlin.run(::sayHello)
+    }
+    @Test
+    fun test_infix() {
+        val start = Point()
+        val end = start left 2 right 10
+        assertEquals(Point(12, 12), end)
+    }
+}
+
+fun sayHello() = println("hello")
+
+data class Point (val x: Int = 0, val y: Int = 0) {
+    infix fun left(steps: Int) = Point(x + steps, y + steps)
+    infix fun right(steps: Int) = Point(x + steps, y + steps)
 }
