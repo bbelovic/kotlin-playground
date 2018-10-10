@@ -33,14 +33,14 @@ class SimpleLambdaExpressionTest {
     @Test
     fun test_infix() {
         val start = Point()
-        val end = start left 2 right 10
-        assertEquals(Point(12, 12), end)
+        val end = start moveLeft 2 moveRight 10
+        assertEquals(Point(x = 12, y = 12), end)
     }
 }
 
 fun sayHello() = println("hello")
 
 data class Point (val x: Int = 0, val y: Int = 0) {
-    infix fun left(steps: Int) = Point(x + steps, y + steps)
-    infix fun right(steps: Int) = Point(x + steps, y + steps)
+    infix fun moveLeft(steps: Int) = Point(x + steps, y + steps)
+    infix fun moveRight(steps: Int) = Point(x + steps, y + steps)
 }
