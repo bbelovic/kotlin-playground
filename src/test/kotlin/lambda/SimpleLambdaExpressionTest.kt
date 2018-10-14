@@ -1,5 +1,6 @@
 package lambda
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
@@ -19,6 +20,13 @@ class SimpleLambdaExpressionTest {
         val expectedChars = arrayListOf('j', 'd', 'o', 'e', 'j', 'a', 'n','e', 'd', 'o', 'e')
         assertEquals(expectedChars, actualChars)
 
+    }
+
+    @Test
+    fun test_flatten() {
+        val lists = arrayListOf(listOf("1", "2"), listOf("3"))
+        val actual = lists.flatten()
+        Assertions.assertEquals(listOf("1", "2", "3"), actual)
     }
 
     @Test
