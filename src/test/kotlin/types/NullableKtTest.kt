@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import java.util.*
 
 internal class NullableKtTest {
     @Test
@@ -17,6 +18,23 @@ internal class NullableKtTest {
         assertEquals(null, lengthNullable(s))
         assertEquals(0, lengthNullableElvis(s))
         assertEquals("abc", lengthNullableElvis(s2))
+    }
+
+    @Test
+    fun test_let() {
+        for (i in 0..10) {
+            val s = getValue()
+            s?.let { printSafe(it) }
+        }
+    }
+
+    private fun getValue(): String? {
+        val r = Random()
+        if (r.nextBoolean()) {
+            return "not-null"
+        } else {
+            return null
+        }
     }
 
     @ParameterizedTest
