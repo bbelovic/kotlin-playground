@@ -2,6 +2,9 @@ package types
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 
 internal class NullableKtTest {
     @Test
@@ -12,6 +15,25 @@ internal class NullableKtTest {
 
         assertEquals(3, lengthNullable(s2))
         assertEquals(null, lengthNullable(s))
+        assertEquals(0, lengthNullableElvis(s))
+        assertEquals("abc", lengthNullableElvis(s2))
+    }
+
+    @ParameterizedTest
+    @MethodSource("testData")
+    fun test2(input: String?, expectedLength: Int) {
+        val actualLength = try {
+            lengthNotNullAssertions(input)
+        } catch (ex: NullPointerException) {
+            0
+        }
+        assertEquals(expectedLength, actualLength)
+    }
+
+    companion object {
+        @JvmStatic
+        fun testData() = listOf<Arguments>(
+                Arguments.of(null, 0), Arguments.of("abc", 3))
     }
 
     @Test
@@ -26,5 +48,14 @@ internal class NullableKtTest {
         assertNotNull(ceo.boss?: Employee("unknown"))
 
         println(employee)
+    }
+
+    @Test
+    fun test_not_null_assertion() {
+        val s = null
+        try {
+            s!!
+        } catch (e : NullPointerException) {}
+
     }
 }
