@@ -23,18 +23,13 @@ internal class NullableKtTest {
     @Test
     fun test_let() {
         for (i in 0..10) {
-            val s = getValue()
-            s?.let { printSafe(it) }
+            getValue()?.let { printSafe(it) }
         }
     }
 
     private fun getValue(): String? {
         val r = Random()
-        if (r.nextBoolean()) {
-            return "not-null"
-        } else {
-            return null
-        }
+        return if (r.nextBoolean()) "not-null" else null
     }
 
     @ParameterizedTest
