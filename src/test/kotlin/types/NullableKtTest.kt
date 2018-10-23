@@ -8,6 +8,20 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.util.*
 
 internal class NullableKtTest {
+
+    val numberSource = "1 2 x 3 y 4 z 5"
+
+    @Test
+    fun test_kotlin_collection() {
+        val actual: List<Long?> = numberSource.split(" ")
+                .asSequence()
+                .map { s -> convert(s) }
+                .filterNotNull()
+                .toList()
+        assertEquals(5, actual.size)
+
+    }
+
     @Test
     fun test() {
         val s: String? = null
@@ -69,6 +83,6 @@ internal class NullableKtTest {
         try {
             s!!
         } catch (e : NullPointerException) {}
-
     }
+
 }

@@ -11,3 +11,9 @@ fun lengthNotNullAssertions(s: String?) = s!!.length
 fun printSafe(s: String) = println(s)
 
 fun String?.isEmpty() = this == null || this.isBlank()
+
+fun neverReturns(): Nothing {
+    throw RuntimeException("Never returns")
+}
+
+fun convert(str: String) = str.toLongOrNull()
