@@ -85,4 +85,11 @@ internal class NullableKtTest {
         } catch (e : NullPointerException) {}
     }
 
+    @Test
+    fun test_array_creation() {
+        val expected = intArrayOf(1, 3, 5, 7, 9)
+        val actual = IntArray(5) { i -> (1 + 2*i)}
+        Arrays.equals(expected, actual)
+    }
+
 }
