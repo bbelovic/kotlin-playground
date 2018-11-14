@@ -30,6 +30,21 @@ internal class GetSetConventionsTest {
 
     }
 
+    @Test
+    fun should_use_minus_convention() {
+        val conventions = GetSetConventions(generateList(2))
+        val otherList = generateList(3)
+        val actual = conventions - otherList
+        assertEquals(0, actual.size())
+    }
+
+    @Test
+    fun should_use_times_convention() {
+        val conventions = GetSetConventions(generateList(2))
+        val actual = conventions * 3
+        assertEquals(6, actual.size())
+    }
+
     private fun generateList(takeItems: Int = 10) = generateSequence(0) { it + 1 }
             .take(takeItems)
             .map { num -> num.toString() }
