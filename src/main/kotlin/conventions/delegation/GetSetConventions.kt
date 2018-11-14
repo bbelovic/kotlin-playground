@@ -1,8 +1,5 @@
 package conventions.delegation
 
-import java.util.*
-import kotlin.collections.ArrayList
-
 class GetSetConventions<T>(val values: MutableList<T>) {
     operator fun get(index: Int) = values.get(index)
     operator fun get(element: T) = values.find { it -> it == element }
@@ -26,4 +23,14 @@ class GetSetConventions<T>(val values: MutableList<T>) {
     }
 
     fun size() = values.size
+
+    override fun equals(other: Any?): Boolean {
+        if (other === this) return true
+        val o = other as? GetSetConventions<*> ?: return false
+        return o.values == this.values
+    }
+
+    override fun hashCode(): Int {
+        return values.hashCode()
+    }
 }
