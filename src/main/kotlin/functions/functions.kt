@@ -1,5 +1,7 @@
 package functions
 
+val simple: (Int)->Int = { it }
+
 val square: (Int) -> Int = {x -> x * x}
 val square2 = {x: Int -> x * x}
 
@@ -15,6 +17,9 @@ val twoAndThreeHOF: ((Int, Int)-> Int) -> Unit = {println("Result HOF: "+ it(2,3
 fun main() {
     println(square(5))
     println(square2(5))
+
+    println ("simple: "+simple(0) )
+
 
     twoAndThree { x, y -> x * y }
     twoAndThree { x, y -> x + y }
