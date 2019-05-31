@@ -28,7 +28,7 @@ fun main() {
     twoAndThree { x, y -> x * y }
     twoAndThree { x, y -> x + y }
 
-    printResult { x -> x +1}
+    printResult { x -> x * (-1)}
 
     twoAndThreeHOF {x,y -> x*y}
 
