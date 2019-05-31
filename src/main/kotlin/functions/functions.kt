@@ -18,6 +18,20 @@ fun printResult(f: (Int) -> Int) {
 
 val twoAndThreeHOF: ((Int, Int)-> Int) -> Unit = {println("Result HOF: "+ it(2,3))}
 
+enum class Delivery {STANDARD, EXPEDITED}
+
+data class Order(val items: Int)
+
+fun calculatorProvider(delivery: Delivery): (Order) -> Double {
+    if (delivery == Delivery.STANDARD) {
+        return {order -> 10.0 * order.items}
+    } else {
+        return {order -> 0.1 * order.items + 2 }
+    }
+}
+
+val calculator = calculatorProvider(Delivery.EXPEDITED);
+
 fun main() {
     println(square(5))
     println(square2(5))
