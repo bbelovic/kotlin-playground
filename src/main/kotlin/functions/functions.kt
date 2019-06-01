@@ -30,13 +30,15 @@ fun calculatorProvider(delivery: Delivery): (Order) -> Double {
     }
 }
 
-val calculator = calculatorProvider(Delivery.EXPEDITED);
+val calculator = calculatorProvider(Delivery.EXPEDITED)
 
 fun main() {
     println(square(5))
     println(square2(5))
 
     println ("simple: "+simple(0) )
+
+    println("Calculator ${calculator(Order(10))}")
 
 
     twoAndThree { x, y -> x * y }
